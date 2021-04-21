@@ -16,9 +16,6 @@ verbosity = 0
 
 group_collection(2892272, api_key=None, collection=None, top_level=False)   #group library
 
-#user_collection(id='7550140', api_key='vqjTyAtHI42qdGo5lQepRfeZ', collection=None, top_level=False) #chrysapa library
-#user_collection(id='7801762', api_key='DXeNW9gJxGdq1aMrTcLUdzzG', collection=None, top_level=False) #cbi_nyu library
-
 # group_collection(id, api_key=None, collection=None, top_level=False)
 # user_collection(id, api_key=None, collection=None, top_level=False)
 #
