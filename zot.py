@@ -1628,13 +1628,12 @@ def make_html(all_items, exclude={}, shorten=False):
                     u = item.url
 
                 t2 = t.replace(u"'", u'’')  # Technically, we're going to have to do much more (or do a flexible match).
-                t_to_replace = ["<i>" + t + "</i>.", "<i>" + t2 + "</i>.", "<i>" + t + "</i>", "<i>" + t2 + "</i>",
+                t_to_replace = ["<b>" + t + "</b>.", "<b>" + t2 + "</b>.", "<b>" + t + "</b>", "<b>" + t2 + "</b>",
                                 t + ".", t2 + ".", t, t2]
                 if u:
                     # Note: insert space before doctitle for copy/paste behavior.
-                    new = tryreplacing(htmlitem, t_to_replace,
-                                       u"<span class=\"doctitle\"><a class=\"doctitle\" href=\"%s\">%s</a></span>" % (
-                                           u, "\\0"))
+                    new = tryreplacing(htmlitem, t_to_replace, u"<span class=\"doctitle\">%s</span>" % ("\\0"))
+                    #href=\"%s\">%s</a></span>" % (u, "\\0"))
 
                     if not new == htmlitem:  # Replacement successful.
                         # Remove "Retrieved from":
