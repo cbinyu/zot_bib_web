@@ -267,7 +267,9 @@ if __name__ == '__main__': # not for documentation-building
 
 def check_requirements ():
     try:
-        v = float("%d.%02d%02d" % tuple(map(int, zotero.__version__.split(r'.'))))
+        # v = float("%d.%02d%02d" % tuple(map(int, zotero.__version__.split(r'.'))))
+        v = (zotero.__api_version__.split(r'.'))
+        v=float(v[0])
         if v < 1.0103:
             warning("Pyzotero version is incompatible.  Upgrade to 1.1.3 or later.")
             sys.exit(1)
@@ -363,7 +365,7 @@ class Settings:
         parser.add_argument('--no_cache', '-n', action='store_true', dest='no_cache', default=None,
                                                                           help="do not use cache         [no_cache]")
         if __name__ == '__main__':
-            v = "ZBW %s - Pyzotero %s - Python %s"%(__version__, zotero.__version__, sys.version)
+            v = "ZBW %s - Pyzotero %s - Python %s"%(__version__, zotero.__api_version__, sys.version)
             parser.add_argument('--version', '-v', version=v, action='version')
 
         parser.add_argument('--interactive', '-i', action='store_true', dest='interactive', default=None,
@@ -1894,7 +1896,7 @@ class DBInstance:
                     if self.zotLastMod == lm and bs == bib_style:
                         if len(items) == 0 or (hasattr(items[0], '__version__') and
                                                        items[0].__version__ == ZotItem.__classversion__ and
-                                                       zv == zotero.__version__):
+                                                       zv == zotero.__api_version__):
                             return items
                         else:
                             # log("version diff")
@@ -1953,7 +1955,7 @@ class DBInstance:
 
         if not no_cache:
             make_sure_path_exists(os.path.dirname(cache_name))
-            pickle.dump((datetime.now(), self.zotLastMod, bib_style, zotero.__version__, a),
+            pickle.dump((datetime.now(), self.zotLastMod, bib_style, zotero.__api_version__, a),
                         open(cache_name, 'wb'))
 
         return a
