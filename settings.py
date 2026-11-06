@@ -197,7 +197,7 @@ show_shortcuts = ['year']
 # (Default is to show all for which bibliographic entries exist in the data.)
 
 show_shortcuts += [shortcut('venue_short', sortDir='desc',
-                            sortBy='count', topN=12)]
+                            sortBy='count', topN=16)]
 
 # To add arbitrary search terms:
 
